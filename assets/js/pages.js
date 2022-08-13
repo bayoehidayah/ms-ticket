@@ -1,9 +1,3 @@
-$.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});
-
 const overlayEl =
     '<div class="overlay dark loader-spin"><i class="fas fa-3x fa-spinner fa-spin text-default"></i></div>';
 
