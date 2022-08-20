@@ -49,7 +49,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'welcome';
+$route['default_controller'] = 'auth';
 $route['404_override'] = '';
-$route['translate_uri_dashes'] = FALSE;
+$route['translate_uri_dashes'] = TRUE;
+$route['pass'] = 'auth/pass';
 
+//Auth Process
+$route['auth/login']  = "auth/checklogin";
+$route['auth/logout'] = "auth/logout";
+
+$route['home'] = "dashboard/index";
+
+//Incident
+$incidentUrl = "incident";
+$route[$incidentUrl] = "incident/index";
+$route[$incidentUrl."/(:num)"] = "incident/editincident/$1";
+$route[$incidentUrl."/resolved/(:num)"] = "incident/showresolved/$1";
+$route[$incidentUrl."/save-incident"] = "incident/saveIncident";
+$route[$incidentUrl."/del-incident/(:num)"] = "incident/delincident/$1";
+$route[$incidentUrl."/set-status/(:num)"] = "incident/setStatus/$1";
+$route[$incidentUrl."/export"] = "export/export";

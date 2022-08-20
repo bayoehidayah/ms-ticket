@@ -120,11 +120,11 @@ function deleteData(url, forceDelete = 0) {
                 }
             }).then((result) => {
                 if (result.dismiss === Swal.DismissReason.timer) {
-                    if (table !== undefined) {
-                        table.ajax.reload(null, false);
-                    } else {
+                    // if (table !== undefined) {
+                    //     table.ajax.reload(null, false);
+                    // } else {
                         location.reload();
-                    }
+                    // }
                 }
             });
         }
