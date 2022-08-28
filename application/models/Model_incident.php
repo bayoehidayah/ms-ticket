@@ -71,6 +71,8 @@
 		}
 
 		public function insertTicket($data){
+			date_default_timezone_set("Asia/Jakarta");
+			$data["created_at"] = date("Y-m-d H:i:s");
 			return $this->db->insert($this->table, $data);
 		}
 

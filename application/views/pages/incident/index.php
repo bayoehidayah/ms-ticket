@@ -52,6 +52,7 @@
 									<th>Desc</th>
 									<th>Service Type</th>
 									<th>Urgency</th>
+									<th>Created At</th>
 									<th>Action</th>
 								</tr>
 							</thead>
@@ -138,6 +139,7 @@
 												echo ('<span class="badge bg-'.$color.'">'.$u.'</span>');
 											?>
 									</td>
+									<td><?= $row->created_at ?></td>
 									<td>
 										<?php
 											if($row->status == "resolved"){
