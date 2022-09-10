@@ -7,7 +7,7 @@
 <nav class="main-header navbar navbar-expand-md navbar-dark navbar-primary">
     <div class="container-fluid">
         <a href="<?= base_url("/") ?>" class="navbar-brand">
-            <img src="<?= base_url("assets/images/logo.png") ?>" alt="logo" class="brand-image"
+            <img src="<?= base_url("assets/images/logo.jpeg") ?>" alt="logo" class="brand-image"
                 style="opacity:.8">
             <span class="brand-text font-weight-light">MS Ticket</span>
         </a>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Waktu pembuatan: 28 Agu 2022 pada 03.41
+-- Waktu pembuatan: 10 Sep 2022 pada 03.27
 -- Versi server: 5.7.34
 -- Versi PHP: 8.0.8
 
@@ -41,7 +41,9 @@ CREATE TABLE `pengguna` (
 
 INSERT INTO `pengguna` (`id`, `username`, `password`, `nama`, `tipe`) VALUES
 (1, 'is1', '$2y$10$Y4BCqJ5bY3Xriq3pQdE8IeFEJOi84cqTCkDjWCvLb4uh.6Lux0ZP.', 'Muhammad Aji Alfaridzi', 'it_support'),
-(2, 'user1', '$2y$10$zHo9FBFHd5tc7ska6QHNAOPuRkFgI2E8JGKiHbUc2olWbG6IfhNaK', 'Harmanto', 'pengguna');
+(2, 'user1', '$2y$10$zHo9FBFHd5tc7ska6QHNAOPuRkFgI2E8JGKiHbUc2olWbG6IfhNaK', 'Harmanto', 'pengguna'),
+(3, 'is2', '$2y$10$78gIAmR9Xf.MARYt6XCspOLutM4WczWnkE.Qr4D62rqbrNYpli7KO', 'Dedi Sianturi ', 'it_support'),
+(4, 'is3', '$2y$10$vJuC3Nt0N6D/uNppheZry..MV4SOmFbyZJYn4gnmF7C2abXkSyFwq', 'Rahmat Rezki', 'it_support');
 
 -- --------------------------------------------------------
 
@@ -109,7 +111,7 @@ ALTER TABLE `ticket_resolved`
 -- AUTO_INCREMENT untuk tabel `pengguna`
 --
 ALTER TABLE `pengguna`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `ticket`
