@@ -21,7 +21,7 @@
 		<div class="row">
 			<div class="col-12">
 				<div class="alert alert-info">
-					Selamat Datang Pegawai PLN UPDK Belawan, <?= @getUser()["nama"] ?>
+					Selamat Datang Pegawai PLN UPDK Belawan
 				</div>
 			</div>
 		</div>
