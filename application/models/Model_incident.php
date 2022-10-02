@@ -55,7 +55,11 @@
 		}
 
 		public function getTicketExport(){
-			return $this->db->get_where($this->table, ["id_it_support" => getIDAuth()])->result();
+			return $this->db
+				->select($this->table.".*", $this->table2.".id_ticket")
+				->join($this->table2, $this->table.".id=".$this->table2.".id_ticket")
+				->get($this->table)
+				->result();
 		}
 
 		public function getTicketResolvedExport($id_ticket){

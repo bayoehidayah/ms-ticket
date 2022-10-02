@@ -12,12 +12,13 @@ class Export extends CI_Controller{
 			->setCellValue('B1', 'User Request')
 			->setCellValue('C1', 'Status')
 			->setCellValue('D1', 'Group/Ruangan')
-			->setCellValue('E1', 'Title/Summary')
-			->setCellValue('F1', 'Desc')
-			->setCellValue('G1', 'Service Type')
-			->setCellValue('H1', 'Urgency')
-			->setCellValue('I1', 'Cause')
-			->setCellValue('J1', 'Resolved Description');
+			->setCellValue('E1', 'IT Support')
+			->setCellValue('F1', 'Title/Summary')
+			->setCellValue('G1', 'Desc')
+			->setCellValue('H1', 'Service Type')
+			->setCellValue('I1', 'Urgency')
+			->setCellValue('J1', 'Cause')
+			->setCellValue('K1', 'Resolved Description');
 
 		$listStatus  = $this->model_incident->listStatus;
 		$listService = $this->model_incident->listServiceType;
@@ -27,18 +28,22 @@ class Export extends CI_Controller{
 		foreach($tickets as $ticket) {
 			$user = $this->model_auth->getUser($ticket->id_pengguna);
 			$resolved = $this->model_incident->getDataTicketResolved($ticket->id);
+			$it_support = $this->model_auth->getDataUser([
+				"id" => $ticket->id_it_support
+			]);
 
 			$spreadsheet->setActiveSheetIndex(0)
 				->setCellValue('A' . $baris, $ticket->id)
 				->setCellValue('B' . $baris, $user->nama)
 				->setCellValue('C' . $baris, @$listStatus[$ticket->status])
 				->setCellValue('D' . $baris, $ticket->group_room)
-				->setCellValue('E' . $baris, $ticket->title)
-				->setCellValue('F' . $baris, $ticket->description)
-				->setCellValue('G' . $baris, @$listService[$ticket->service_type])
-				->setCellValue('H' . $baris, @$listUrgent[$ticket->urgent_level])
-				->setCellValue('I' . $baris, @$resolved['cause'])
-				->setCellValue('J' . $baris, @$resolved['resolved_ket']);
+				->setCellValue('E' . $baris, $it_support["nama"])
+				->setCellValue('F' . $baris, $ticket->title)
+				->setCellValue('G' . $baris, $ticket->description)
+				->setCellValue('H' . $baris, @$listService[$ticket->service_type])
+				->setCellValue('I' . $baris, @$listUrgent[$ticket->urgent_level])
+				->setCellValue('J' . $baris, @$resolved['cause'])
+				->setCellValue('K' . $baris, @$resolved['resolved_ket']);
 
 			$baris++;
 		}
