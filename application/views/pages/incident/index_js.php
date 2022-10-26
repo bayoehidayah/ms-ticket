@@ -61,7 +61,7 @@
                     const data = response.data;
                     $("#formModal")[0].reset();
                     $("#id_ticket").val(data.id);
-                    $("#it_support").val(data.id_it_support);
+                    $("#it_support").val(data.it_support);
 					$("#it_support").attr("readonly", "readonly");
                     $("#title").val(data.title);
                     $("#description").val(data.description);

@@ -28,16 +28,17 @@ class Export extends CI_Controller{
 		foreach($tickets as $ticket) {
 			$user = $this->model_auth->getUser($ticket->id_pengguna);
 			$resolved = $this->model_incident->getDataTicketResolved($ticket->id);
-			$it_support = $this->model_auth->getDataUser([
-				"id" => $ticket->id_it_support
-			]);
+			// $it_support = $this->model_auth->getDataUser([
+			// 	"id" => $ticket->id_it_support
+			// ]);
 
 			$spreadsheet->setActiveSheetIndex(0)
 				->setCellValue('A' . $baris, $ticket->id)
 				->setCellValue('B' . $baris, $user->nama)
 				->setCellValue('C' . $baris, @$listStatus[$ticket->status])
 				->setCellValue('D' . $baris, $ticket->group_room)
-				->setCellValue('E' . $baris, $it_support["nama"])
+				// ->setCellValue('E' . $baris, $it_support["nama"])
+				->setCellValue('E' . $baris, $ticket->it_support)
 				->setCellValue('F' . $baris, $ticket->title)
 				->setCellValue('G' . $baris, $ticket->description)
 				->setCellValue('H' . $baris, @$listService[$ticket->service_type])

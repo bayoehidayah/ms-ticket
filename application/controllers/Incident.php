@@ -10,7 +10,7 @@
 		}
 
 		public function index(){
-			$data["it_support"] = $this->model_auth->getITSupport();
+			// $data["it_support"] = $this->model_auth->getITSupport();
 			$data["incident"] = $this->model_incident->getAllTicket();
 			$data["js"] = "pages/incident/index_js.php";
 
@@ -28,15 +28,15 @@
 				$this->db->trans_begin();
 
 				$set = $this->input->post();
-				if(!$this->model_auth->isExist($set['it_support'])){
-					throw new \Exception("IT Support not found");
-				}
+				// if(!$this->model_auth->isExist($set['it_support'])){
+				// 	throw new \Exception("IT Support not found");
+				// }
 
 				$id = $this->input->post("id_ticket");
 				$set["id_pengguna"]   = getIDAuth();
-				$set["id_it_support"] = $set["it_support"];
+				// $set["id_it_support"] = $set["it_support"];
 				unset($set["id_ticket"]);
-				unset($set["it_support"]);
+				// unset($set["it_support"]);
 
 				if ($id == null || $id == "") {
 					if(!$this->model_incident->insertTicket($set)){

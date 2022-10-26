@@ -87,10 +87,7 @@
 									</td>
 									<td><?= $row->group_room ?></td>
 									<td>
-										<?php
-												$is = $this->model_auth->getDataUser(['id' => $row->id_it_support]);
-												echo $is['nama'];
-											?>
+										<?= $row->it_support ?>
 									</td>
 									<td>
 										<?= $row->title ?>
@@ -225,12 +222,8 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="it_support">IT Support</label>
-								<select name="it_support" id="it_support" class="form-control">
-									<option value="" selected>-- Choose IT Support --</option>
-									<?php foreach($it_support as $row){ ?>
-									<option value="<?= $row->id ?>"><?= $row->nama ?></option>
-									<?php } ?>
-								</select>
+								<input type="text" name="it_support" class="form-control" id="it_support"
+									placeholder="IT Support">
 							</div>
 							<div class="form-group">
 								<label for="title">Title/Summary</label>
