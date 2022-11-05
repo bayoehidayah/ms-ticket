@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Waktu pembuatan: 10 Sep 2022 pada 03.27
+-- Waktu pembuatan: 05 Nov 2022 pada 07.12
 -- Versi server: 5.7.34
 -- Versi PHP: 8.0.8
 
@@ -54,7 +54,7 @@ INSERT INTO `pengguna` (`id`, `username`, `password`, `nama`, `tipe`) VALUES
 CREATE TABLE `ticket` (
   `id` int(20) NOT NULL,
   `id_pengguna` int(20) DEFAULT NULL,
-  `id_it_support` int(20) DEFAULT NULL,
+  `it_support` varchar(100) DEFAULT NULL,
   `title` varchar(100) NOT NULL,
   `description` text NOT NULL,
   `status` enum('new','assign','resolved') NOT NULL DEFAULT 'new',
@@ -64,6 +64,16 @@ CREATE TABLE `ticket` (
   `priority` enum('1','2','3','4') NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `ticket`
+--
+
+INSERT INTO `ticket` (`id`, `id_pengguna`, `it_support`, `title`, `description`, `status`, `service_type`, `group_room`, `urgent_level`, `priority`, `created_at`) VALUES
+(1, 2, '3', 'Enim non accusamus u', 'Exercitation volupta', 'resolved', 'perangkat_pc/laptop_internal', 'Cupiditate in et ten', 'high', '1', '2022-10-02 06:42:16'),
+(2, 2, '3', 'Ut modi aut quas vol', 'Perspiciatis esse r', 'new', 'server', 'Mollitia dolores del', 'critical', '4', '2022-10-02 07:00:03'),
+(3, 2, '1', 'Voluptatem dolorem i', 'Nulla quia exercitat', 'resolved', 'perangkat_pc/laptop_internal', 'Qui mollit laboriosa', 'high', '3', '2022-10-02 07:00:10'),
+(4, 2, 'Sit labore dolor mag', 'Asperiores esse qui', 'Eos et quibusdam ea', 'resolved', 'aplikasi_pendukung_kerja', 'Voluptates quo qui d', 'medium', '1', '2022-10-25 16:51:22');
 
 -- --------------------------------------------------------
 
@@ -77,6 +87,14 @@ CREATE TABLE `ticket_resolved` (
   `cause` varchar(100) NOT NULL,
   `resolved_ket` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `ticket_resolved`
+--
+
+INSERT INTO `ticket_resolved` (`id`, `id_ticket`, `cause`, `resolved_ket`) VALUES
+(1, 1, 'Et non praesentium e', 'Perferendis id aut c'),
+(2, 3, 'Molestias quaerat ap', 'Consequuntur cupidit');
 
 --
 -- Indexes for dumped tables
@@ -94,7 +112,7 @@ ALTER TABLE `pengguna`
 ALTER TABLE `ticket`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_pengguna` (`id_pengguna`),
-  ADD KEY `id_it_support` (`id_it_support`);
+  ADD KEY `it_support` (`it_support`);
 
 --
 -- Indeks untuk tabel `ticket_resolved`
@@ -117,13 +135,13 @@ ALTER TABLE `pengguna`
 -- AUTO_INCREMENT untuk tabel `ticket`
 --
 ALTER TABLE `ticket`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `ticket_resolved`
 --
 ALTER TABLE `ticket_resolved`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
@@ -133,7 +151,6 @@ ALTER TABLE `ticket_resolved`
 -- Ketidakleluasaan untuk tabel `ticket`
 --
 ALTER TABLE `ticket`
-  ADD CONSTRAINT `ticket_id_it_support_foreign_key` FOREIGN KEY (`id_it_support`) REFERENCES `pengguna` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `ticket_id_pengguna_foreign_key` FOREIGN KEY (`id_pengguna`) REFERENCES `pengguna` (`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 --
