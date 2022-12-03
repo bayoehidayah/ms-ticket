@@ -33,7 +33,7 @@
 				// }
 
 				$id = $this->input->post("id_ticket");
-				$set["id_pengguna"]   = getIDAuth();
+				// $set["id_pengguna"]   = getIDAuth();
 				// $set["id_it_support"] = $set["it_support"];
 				unset($set["id_ticket"]);
 				// unset($set["it_support"]);

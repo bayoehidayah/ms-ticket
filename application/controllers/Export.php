@@ -26,7 +26,7 @@ class Export extends CI_Controller{
 
 		$baris = 2;
 		foreach($tickets as $ticket) {
-			$user = $this->model_auth->getUser($ticket->id_pengguna);
+			// $user = $this->model_auth->getUser($ticket->id_pengguna);
 			$resolved = $this->model_incident->getDataTicketResolved($ticket->id);
 			// $it_support = $this->model_auth->getDataUser([
 			// 	"id" => $ticket->id_it_support
@@ -34,7 +34,8 @@ class Export extends CI_Controller{
 
 			$spreadsheet->setActiveSheetIndex(0)
 				->setCellValue('A' . $baris, $ticket->id)
-				->setCellValue('B' . $baris, $user->nama)
+				// ->setCellValue('B' . $baris, $user->nama)
+				->setCellValue('B' . $baris, $ticket->id_pengguna)
 				->setCellValue('C' . $baris, @$listStatus[$ticket->status])
 				->setCellValue('D' . $baris, $ticket->group_room)
 				// ->setCellValue('E' . $baris, $it_support["nama"])

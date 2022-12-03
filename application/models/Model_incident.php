@@ -47,11 +47,11 @@
 		}
 
 		public function getAllTicket(){
-			if(isItSupport()){
+			// if(isItSupport()){
 				return $this->db->get($this->table)->result();
-			}
+			// }
 			
-			return $this->db->get_where($this->table, ["id_pengguna" => getIDAuth()])->result();
+			// return $this->db->get_where($this->table, ["id_pengguna" => getIDAuth()])->result();
 		}
 
 		public function getTicketExport(){

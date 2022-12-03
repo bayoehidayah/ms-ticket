@@ -64,8 +64,9 @@
 									<td><?= $row->id ?></td>
 									<td>
 										<?php
-												$user = $this->model_auth->getDataUser(['id' => $row->id_pengguna]);
-												echo $user['nama'];
+												// $user = $this->model_auth->getDataUser(['id' => $row->id_pengguna]);
+												// echo $user['nama'];
+												echo $row->id_pengguna;
 											?>
 									</td>
 									<td>
@@ -221,6 +222,11 @@
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
+								<label for="id_pengguna">User Request</label>
+								<input type="text" name="id_pengguna" class="form-control" id="id_pengguna"
+									placeholder="User Request">
+							</div>
+							<div class="form-group">
 								<label for="it_support">IT Support</label>
 								<input type="text" name="it_support" class="form-control" id="it_support"
 									placeholder="IT Support">
@@ -232,7 +238,7 @@
 							</div>
 							<div class="form-group">
 								<label for="description">Description</label>
-								<textarea name="description" id="description" rows="8" class="form-control"></textarea>
+								<textarea name="description" id="description" rows="5" class="form-control"></textarea>
 							</div>
 						</div>
 						<div class="col-md-6">
