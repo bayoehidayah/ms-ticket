@@ -46,8 +46,12 @@
 			}
 		}
 
-		public function getAllTicket(){
+		public function getAllTicket($where = null){
 			// if(isItSupport()){
+				if($where != null){
+					return $this->db->get_where($this->table, $where)->result();
+				}
+
 				return $this->db->get($this->table)->result();
 			// }
 			

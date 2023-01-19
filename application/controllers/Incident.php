@@ -11,10 +11,29 @@
 
 		public function index(){
 			// $data["it_support"] = $this->model_auth->getITSupport();
+
 			$data["incident"] = $this->model_incident->getAllTicket();
+			if($this->input->get("status")){
+				$data["incident"] = $this->model_incident->getAllTicket([
+					"status" => $this->input->get("status")
+				]);
+			}
+
 			$data["js"] = "pages/incident/index_js.php";
 
-			$data["status"]   = $this->model_incident->listStatus;
+			$status = $this->model_incident->listStatus;
+			if(!isItSupport()){
+				unset($status["assign"]);
+				unset($status["resolved"]);
+			}
+
+			$data["it_support"] = [
+				"Dedi Sianturi",
+				"Muhammad Aji Alfaridzi",
+				"Rahmat Rezki"
+			];
+
+			$data["status"]   = $status;
 			$data["service"]  = $this->model_incident->listServiceType;
 			$data["urgent"]   = $this->model_incident->listUrgent;
 			$data["priority"] = $this->model_incident->maxPriority;

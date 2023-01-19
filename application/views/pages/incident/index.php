@@ -25,6 +25,18 @@
 						<h3 class="card-title">Incident List</h3>
 						<?php if(!isItSupport()){ ?>
 						<div class="card-tools">
+							<?php if($this->input->get("status")){ ?>
+							<a href="<?= base_url("incident") ?>" class="btn btn-success btn-xs"
+								id="btnModal">
+								<i class="fas fa-list"></i> All Status
+							</a>
+							<?php } else { ?>
+							<a href="<?= base_url("incident?status=new") ?>" class="btn btn-success btn-xs"
+								id="btnModal">
+								<i class="fas fa-list-ol"></i> New Status
+							</a>
+							<?php } ?>
+
 							<button data-toggle="modal" data-target="#modalForm" class="btn btn-primary btn-xs"
 								id="btnModal">
 								<i class="fas fa-plus"></i> New Incident
@@ -32,6 +44,17 @@
 						</div>
 						<?php } else { ?>
 						<div class="card-tools">
+							<?php if($this->input->get("status")){ ?>
+							<a href="<?= base_url("incident") ?>" class="btn btn-success btn-xs"
+								id="btnModal">
+								<i class="fas fa-list"></i> All Status
+							</a>
+							<?php } else { ?>
+							<a href="<?= base_url("incident?status=new") ?>" class="btn btn-success btn-xs"
+								id="btnModal">
+								<i class="fas fa-list-ol"></i> New Status
+							</a>
+							<?php } ?>
 							<a href="<?= base_url("incident/export") ?>" class="btn btn-success btn-xs">
 								<i class="fas fa-fw fa-file-excel"></i> Export
 							</a>
@@ -228,8 +251,13 @@
 							</div>
 							<div class="form-group">
 								<label for="it_support">IT Support</label>
-								<input type="text" name="it_support" class="form-control" id="it_support"
-									placeholder="IT Support">
+								<select name="it_support" id="it_support" class="form-control">
+								<option value="" selected>-- Choose IT Support --</option>
+								<?php foreach($it_support as $val) { ?>
+								<!-- <input type="text" name="it_support" class="form-control" id="it_support" placeholder="IT Support"> -->
+								<option value="<?= $val ?>"><?= $val ?></option>
+								<?php } ?>
+								</select>
 							</div>
 							<div class="form-group">
 								<label for="title">Title/Summary</label>
@@ -244,12 +272,16 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="status">Status</label>
+								<?php if(count($status) > 1) { ?>
 								<select name="status" id="status" class="form-control">
 									<option value="" selected>-- Choose Status --</option>
-									<?php foreach($status as $key => $val){ ?>
+									<?php foreach ($status as $key => $val) { ?>
 									<option value="<?= $key ?>"><?= $val ?></option>
 									<?php } ?>
 								</select>
+								<?php } else { ?>
+								<input type="text" name="status" id="status" value="<?= $status["new"] ?>" class="form-control" readonly>
+								<?php } ?>
 							</div>
 							<div class="form-group">
 								<label for="service_type">Service Type</label>
