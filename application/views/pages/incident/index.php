@@ -280,7 +280,7 @@
 									<?php } ?>
 								</select>
 								<?php } else { ?>
-								<input type="text" name="status" id="status" value="<?= $status["new"] ?>" class="form-control" readonly>
+								<input type="text" name="status" id="status" value="new" class="form-control" readonly>
 								<?php } ?>
 							</div>
 							<div class="form-group">
