@@ -94,7 +94,7 @@
 									</td>
 									<td>
 										<?php
-												$s = @$status[$row->status];
+												$s = @$listStatus[$row->status];
 
 												if($row->status == "new"){
 													$color = "success";
@@ -275,7 +275,7 @@
 								<?php if(count($status) > 1) { ?>
 								<select name="status" id="status" class="form-control">
 									<option value="" selected>-- Choose Status --</option>
-									<?php foreach ($status as $key => $val) { ?>
+									<?php foreach ($listStatus as $key => $val) { ?>
 									<option value="<?= $key ?>"><?= $val ?></option>
 									<?php } ?>
 								</select>

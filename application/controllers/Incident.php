@@ -33,10 +33,11 @@
 				"Rahmat Rezki"
 			];
 
-			$data["status"]   = $status;
-			$data["service"]  = $this->model_incident->listServiceType;
-			$data["urgent"]   = $this->model_incident->listUrgent;
-			$data["priority"] = $this->model_incident->maxPriority;
+			$data["status"]     = $status;
+			$data["listStatus"] = $this->model_incident->listStatus;
+			$data["service"]    = $this->model_incident->listServiceType;
+			$data["urgent"]     = $this->model_incident->listUrgent;
+			$data["priority"]   = $this->model_incident->maxPriority;
 
 			// echo json_encode($data);
 			$this->themes->primary("pages/incident/index", $data);
